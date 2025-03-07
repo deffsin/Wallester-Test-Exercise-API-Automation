@@ -17,3 +17,9 @@ class APIClient:
     #     response = self.session.post(url)
     #     print(f"Request URL: {url}, Response Status: {response.status_code}")
     #     return response
+
+    def get_all_brands(self):
+        url = f"{self.base_url}brandsList"
+        response = self.session.get(url)
+        print(f"Request URL: {url}, Response Status: {response.status_code}")
+        return response

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Wallester Test Exercise API Automation.iml" filepath="$PROJECT_DIR$/Wallester Test Exercise API Automation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Wallester Test Exercise API Automation.iml" filepath="$PROJECT_DIR$/.idea/Wallester Test Exercise API Automation.iml" />
     </modules>
   </component>
 </project>
