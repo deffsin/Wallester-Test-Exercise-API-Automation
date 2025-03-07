@@ -1,7 +1,7 @@
 from config.logging import logger
 import pytest
 
-def validate_response(response, expected_status=200):
+def validate_response(response, expected_status):
     if response.status_code != expected_status:
         logger.error(f"Unexpected status code: {response.status_code}")
         logger.error(f"Request URL: {response.url}")

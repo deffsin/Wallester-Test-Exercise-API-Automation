@@ -8,7 +8,7 @@ def api_client():
     return APIClient()
 
 def test_get_all_products(api_client):
-    response_data = get_all_products(api_client)
+    response_data = get_all_products(api_client, expected_status_code=200)
     products = response_data.get('products', [])
 
     assert isinstance(products, list), "Products should be a list"
