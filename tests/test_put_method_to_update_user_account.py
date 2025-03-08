@@ -17,7 +17,7 @@ def test_put_method_to_update_user_account(api_client):
         title="Mr",
         birth_date="04",
         birth_month="09",
-        birth_year="2000",
+        birth_year="2000", # 2024 limit
         firstname="Denis",
         lastname="S",
         company="Wallester",

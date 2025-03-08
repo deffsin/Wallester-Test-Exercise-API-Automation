@@ -89,3 +89,7 @@ def put_method_to_update_user_account(api_client, name, email, password, title, 
         mobile_number=mobile_number
     )
     return validate_response(response, expected_status_code)
+
+def get_user_account_detail_by_email(api_client, email, expected_status_code):
+    response = api_client.get_user_account_detail_by_email(email)
+    return validate_response(response, expected_status_code)

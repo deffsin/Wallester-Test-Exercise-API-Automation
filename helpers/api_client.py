@@ -139,3 +139,10 @@ class APIClient:
         response = self.session.put(url, data=payload)
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+
+    def get_user_account_detail_by_email(self, email):
+        url = f"{self.base_url}getUserDetailByEmail"
+        response = self.session.get(url, params={"email": email})
+        print(f"Request URL: {response.url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
