@@ -50,3 +50,7 @@ def post_to_create_user_account(api_client, name, email, password, title, birth_
         mobile_number=mobile_number
     )
     return validate_response(response, expected_status_code)
+
+def post_to_verify_login_without_email_parameter(api_client, password, expected_status_code):
+    response = api_client.post_to_verify_login_without_email_parameter(password)
+    return validate_response(response, expected_status_code)

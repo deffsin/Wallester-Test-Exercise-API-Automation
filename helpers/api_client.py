@@ -77,3 +77,12 @@ class APIClient:
         response = self.session.post(url, data=payload)
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+    def post_to_verify_login_without_email_parameter(self, password):
+        url = f"{self.base_url}verifyLogin"
+        payload = {
+            "password": password
+        }
+        response = self.session.post(url, data=payload)
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
