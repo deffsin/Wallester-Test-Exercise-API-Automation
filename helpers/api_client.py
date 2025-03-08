@@ -36,3 +36,9 @@ class APIClient:
         response = self.session.post(url, data=payload) # post s parametrom
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+    def post_to_search_product_without_parameter(self):
+        url = f"{self.base_url}searchProduct"
+        response = self.session.post(url, data={}) # pustoj data otpravljaem
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
