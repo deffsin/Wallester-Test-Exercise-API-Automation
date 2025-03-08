@@ -7,14 +7,34 @@ from config.logging import logger
 def api_client():
     return APIClient()
 
-def test_put_method_to_update_user_account(api_client):
+def generate_account_body(name, email, password, title, birth_date, birth_month, birth_year,
+                          firstname, lastname, company, address1, address2, country, zipcode, state, city, mobile_number):
+    return {
+        "name": name,
+        "email": email,
+        "password": password,
+        "title": title,
+        "birth_date": birth_date,
+        "birth_month": birth_month,
+        "birth_year": birth_year,
+        "firstname": firstname,
+        "lastname": lastname,
+        "company": company,
+        "address1": address1,
+        "address2": address2,
+        "country": country,
+        "zipcode": zipcode,
+        "state": state,
+        "city": city,
+        "mobile_number": mobile_number
+    }
 
-    response_data = put_method_to_update_user_account(
-        api_client,
+def test_put_method_to_update_user_account(api_client):
+    payload = generate_account_body(
         name="Denis",
         email="deffsinco@gmail.com",
         password="qwerty",
-        title="Mr",
+        title="Mrs",
         birth_date="04",
         birth_month="09",
         birth_year="2000", # 2024 limit
@@ -27,9 +47,10 @@ def test_put_method_to_update_user_account(api_client):
         zipcode="13000",
         state="Harjumaa",
         city="Tallinn",
-        mobile_number="555555",
-        expected_status_code=200
+        mobile_number="555555"
     )
+
+    response_data = put_method_to_update_user_account(api_client, **payload, expected_status_code=200)
 
     assert "message" in response_data, "Response does not contain 'message' field"
     assert response_data["message"], "Response 'message' field is empty"
