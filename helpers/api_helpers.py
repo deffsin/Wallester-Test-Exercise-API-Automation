@@ -11,3 +11,7 @@ def post_to_all_products(api_client, expected_status_code):
 def get_all_brands(api_client, expected_status_code):
     response = api_client.get_all_brands()
     return validate_response(response, expected_status_code)
+
+def put_to_all_brands(api_client, expected_status_code):
+    response = api_client.put_to_all_brands()
+    return validate_response(response, expected_status_code)
