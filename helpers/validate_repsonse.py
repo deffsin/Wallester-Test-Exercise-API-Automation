@@ -2,15 +2,23 @@ from config.logging import logger
 import pytest
 
 def validate_response(response, expected_status):
-    if response.status_code != expected_status:
-        logger.error(f"Unexpected status code: {response.status_code}")
-        logger.error(f"Request URL: {response.url}")
-        logger.error(f"Response Body: {response.text}")
-        pytest.fail(f"Test failed due to unexpected status code: {response.status_code}")
-
-    assert response.status_code == expected_status, f"Unexpected status code: {response.status_code}"
+    response_json = {}
 
     try:
-        return response.json()
+        response_json = response.json()
     except ValueError:
         pytest.fail("Response body isn't valid JSON.")
+
+    if response.status_code != expected_status:
+        logger.warning(
+            f"Unexpected HTTP status: {response.status_code}. Expected: {expected_status}, "
+            f"but responseCode in JSON: {response_json.get('responseCode')}"
+        )
+
+    if response_json.get("responseCode") != expected_status:
+        pytest.fail(
+            f"Test failed: expected responseCode {expected_status}, "
+            f"but got {response_json.get('responseCode')}"
+        )
+
+    return response_json

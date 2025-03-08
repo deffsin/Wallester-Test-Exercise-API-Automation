@@ -12,11 +12,11 @@ class APIClient:
         print(f"Request URL: {url}, Response Status: {response.status_code}")
         return response
 
-    # def post_to_all_products(self):
-    #     url = f"{self.base_url}productsList"
-    #     response = self.session.post(url)
-    #     print(f"Request URL: {url}, Response Status: {response.status_code}")
-    #     return response
+    def post_to_all_products(self):
+        url = f"{self.base_url}productsList"
+        response = self.session.post(url)
+        print(f"Request URL: {url}, Response Status: {response.status_code}")
+        return response
 
     def get_all_brands(self):
         url = f"{self.base_url}brandsList"
