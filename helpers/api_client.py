@@ -42,3 +42,38 @@ class APIClient:
         response = self.session.post(url, data={}) # pustoj data otpravljaem
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+    def post_to_verify_login_with_valid_details(self, email, password):
+        url = f"{self.base_url}verifyLogin"
+        payload = {"email": email,
+                   "password": password
+        }
+        response = self.session.post(url, data=payload)
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
+
+    def post_to_create_user_account(self, name, email, password, title, birth_date, birth_month, birth_year,
+                                    firstname, lastname, company, address1, address2, country, zipcode, state, city, mobile_number):
+        url = f"{self.base_url}createAccount"
+        payload = {
+            "name": name,
+            "email": email,
+            "password": password,
+            "title": title,
+            "birth_date": birth_date,
+            "birth_month": birth_month,
+            "birth_year": birth_year,
+            "firstname": firstname,
+            "lastname": lastname,
+            "company": company,
+            "address1": address1,
+            "address2": address2,
+            "country": country,
+            "zipcode": zipcode,
+            "state": state,
+            "city": city,
+            "mobile_number": mobile_number
+        }
+        response = self.session.post(url, data=payload)
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response

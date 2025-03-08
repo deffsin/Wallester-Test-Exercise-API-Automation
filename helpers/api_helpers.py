@@ -23,3 +23,30 @@ def post_to_search_product(api_client, search_product, expected_status_code):
 def post_to_search_product_without_parameter(api_client, expected_status_code):
     response = api_client.post_to_search_product_without_parameter()
     return validate_response(response, expected_status_code)
+
+def post_to_verify_login_with_valid_details(api_client, email, password, expected_status_code):
+    response = api_client.post_to_verify_login_with_valid_details(email, password)
+    return validate_response(response, expected_status_code)
+
+def post_to_create_user_account(api_client, name, email, password, title, birth_date, birth_month, birth_year,
+                                firstname, lastname, company, address1, address2, country, zipcode, state, city, mobile_number, expected_status_code):
+    response = api_client.post_to_create_user_account(
+        name=name,
+        email=email,
+        password=password,
+        title=title,
+        birth_date=birth_date,
+        birth_month=birth_month,
+        birth_year=birth_year,
+        firstname=firstname,
+        lastname=lastname,
+        company=company,
+        address1=address1,
+        address2=address2,
+        country=country,
+        zipcode=zipcode,
+        state=state,
+        city=city,
+        mobile_number=mobile_number
+    )
+    return validate_response(response, expected_status_code)
