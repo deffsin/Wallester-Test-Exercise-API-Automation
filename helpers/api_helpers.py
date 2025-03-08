@@ -58,3 +58,7 @@ def post_to_verify_login_without_email_parameter(api_client, password, expected_
 def delete_to_verify_login(api_client, expected_status_code):
     response = api_client.delete_to_verify_login()
     return validate_response(response, expected_status_code)
+
+def post_to_verify_login_with_invalid_details(api_client, email, password, expected_status_code):
+    response = api_client.post_to_verify_login_with_invalid_details(email, password)
+    return validate_response(response, expected_status_code)

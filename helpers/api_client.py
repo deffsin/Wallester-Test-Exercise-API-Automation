@@ -93,3 +93,13 @@ class APIClient:
         response = self.session.delete(url)
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+    def post_to_verify_login_with_invalid_details(self, email, password):
+        url = f"{self.base_url}verifyLogin"
+        payload = {
+            "email": email,
+            "password": password
+        }
+        response = self.session.post(url, data=payload)
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
