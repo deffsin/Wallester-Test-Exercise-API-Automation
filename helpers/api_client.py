@@ -29,3 +29,10 @@ class APIClient:
         response = self.session.put(url)
         print(f"Request URL: {url}, Response Status: {response.status_code}")
         return response
+
+    def post_to_search_product(self, search_product):
+        url = f"{self.base_url}searchProduct"
+        payload = {"search_product": search_product}
+        response = self.session.post(url, data=payload) # post s parametrom
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
