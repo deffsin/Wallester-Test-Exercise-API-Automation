@@ -113,3 +113,29 @@ class APIClient:
         response = self.session.delete(url, data=payload)
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+    def put_method_to_update_user_account(self, name, email, password, title, birth_date, birth_month, birth_year,
+                                    firstname, lastname, company, address1, address2, country, zipcode, state, city, mobile_number):
+        url = f"{self.base_url}updateAccount"
+        payload = {
+            "name": name,
+            "email": email,
+            "password": password,
+            "title": title,
+            "birth_date": birth_date,
+            "birth_month": birth_month,
+            "birth_year": birth_year,
+            "firstname": firstname,
+            "lastname": lastname,
+            "company": company,
+            "address1": address1,
+            "address2": address2,
+            "country": country,
+            "zipcode": zipcode,
+            "state": state,
+            "city": city,
+            "mobile_number": mobile_number
+        }
+        response = self.session.put(url, data=payload)
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response

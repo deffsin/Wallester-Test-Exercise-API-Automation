@@ -66,3 +66,26 @@ def post_to_verify_login_with_invalid_details(api_client, email, password, expec
 def delete_method_to_delete_user_account(api_client, email, password, expected_status_code):
     response = api_client.delete_method_to_delete_user_account(email, password)
     return validate_response(response, expected_status_code)
+
+def put_method_to_update_user_account(api_client, name, email, password, title, birth_date, birth_month, birth_year,
+                                firstname, lastname, company, address1, address2, country, zipcode, state, city, mobile_number, expected_status_code):
+    response = api_client.put_method_to_update_user_account(
+        name=name,
+        email=email,
+        password=password,
+        title=title,
+        birth_date=birth_date,
+        birth_month=birth_month,
+        birth_year=birth_year,
+        firstname=firstname,
+        lastname=lastname,
+        company=company,
+        address1=address1,
+        address2=address2,
+        country=country,
+        zipcode=zipcode,
+        state=state,
+        city=city,
+        mobile_number=mobile_number
+    )
+    return validate_response(response, expected_status_code)
