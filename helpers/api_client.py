@@ -86,3 +86,10 @@ class APIClient:
         response = self.session.post(url, data=payload)
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+
+    def delete_to_verify_login(self):
+        url = f"{self.base_url}verifyLogin"
+        response = self.session.delete(url)
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
