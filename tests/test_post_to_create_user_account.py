@@ -12,7 +12,7 @@ def test_post_to_create_user_account(api_client):
     response_data = post_to_create_user_account(
         api_client,
         name="Denis",
-        email="dffsinco@gmail.com",
+        email="deffsinco@gmail.com",
         password="qwerty",
         title="Mr",
         birth_date="04",

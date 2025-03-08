@@ -103,3 +103,13 @@ class APIClient:
         response = self.session.post(url, data=payload)
         print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
         return response
+
+    def delete_method_to_delete_user_account(self, email, password):
+        url = f"{self.base_url}deleteAccount"
+        payload = {
+            "email": email,
+            "password": password
+        }
+        response = self.session.delete(url, data=payload)
+        print(f"Request URL: {url}, Response Status: {response.status_code}, Response: {response.text}")
+        return response
