@@ -1,54 +1,47 @@
 import pytest
+from mimesis import Person, Address
+from mimesis.locales import Locale
 from helpers.api_client import APIClient
 from helpers.api_helpers import post_to_create_user_account
 from config.logging import logger
+
+person = Person(Locale.EN)
+address = Address(Locale.EN)
 
 @pytest.fixture
 def api_client():
     return APIClient()
 
-def generate_account_body(name, email, password, title, birth_date, birth_month, birth_year,
-                          firstname, lastname, company, address1, address2, country, zipcode, state, city, mobile_number):
-    return {
-        "name": name,
-        "email": email,
-        "password": password,
-        "title": title,
-        "birth_date": birth_date,
-        "birth_month": birth_month,
-        "birth_year": birth_year,
-        "firstname": firstname,
-        "lastname": lastname,
-        "company": company,
-        "address1": address1,
-        "address2": address2,
-        "country": country,
-        "zipcode": zipcode,
-        "state": state,
-        "city": city,
-        "mobile_number": mobile_number
+def generate_account_body():
+    account = {
+        "name": person.first_name(),
+        "email": person.email(),
+        "password": person.password(),
+        "title": "Mr",
+        "birth_date": "04",
+        "birth_month": "09",
+        "birth_year": "2000",
+        "firstname": person.first_name(),
+        "lastname": person.last_name(),
+        "company": "Wallester",
+        "address1": address.address(),
+        "address2": "",
+        "country": address.country(),
+        "zipcode": address.postal_code(),
+        "state": address.state(),
+        "city": address.city(),
+        "mobile_number": person.telephone()
     }
 
+    log_created_account(person.email(), person.password())
+    return account
+
+def log_created_account(email, password):
+    with open("created_accounts.txt", "a") as f:
+        f.write(f"Email: {email}, Password: {password}\n")
+
 def test_post_to_create_user_account(api_client):
-    payload = generate_account_body(
-        name="Denis",
-        email="deffsinco@gmail.com",
-        password="qwerty",
-        title="Mr",
-        birth_date="04",
-        birth_month="09",
-        birth_year="2000", # 2024 limit
-        firstname="Denis",
-        lastname="S",
-        company="Wallester",
-        address1="Pikk 100",
-        address2="",
-        country="Estonia",
-        zipcode="13000",
-        state="Harjumaa",
-        city="Tallinn",
-        mobile_number="555555"
-    )
+    payload = generate_account_body()
 
     response_data = post_to_create_user_account(api_client, **payload, expected_status_code=201)
 
